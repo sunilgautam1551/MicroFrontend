@@ -13,6 +13,7 @@ module.exports = {
       exposes: {
         "./ProductsIndex": "./src/index",
       },
+      shared: ['faker']
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html", // I am not explicityly adding script tag to index.html as build can genrate files with any name so htmlwebpackplugin will help in insterting the right file.
