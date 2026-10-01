@@ -11,12 +11,19 @@ module.exports = {
   devServer: {
     port: 8082,
   },
+  module: {
+    rules: [
+      // `import text from "./file?raw"` gives the file's source as a string (used by the learning panel).
+      { resourceQuery: /raw/, type: "asset/source" },
+    ],
+  },
   plugins: [
     new ModuleFederationPlugin({
       name: "cart",
       filename: "remoteEntry.js",
       exposes: {
         "./CartShow": "./src/bootstrap",
+        "./CartLearn": "./src/learn",
       },
       shared: ['faker']
 

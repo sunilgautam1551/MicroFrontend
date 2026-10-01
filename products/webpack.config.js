@@ -9,12 +9,19 @@ module.exports = {
   devServer: {
     port: 8081, // main.js running on port 8081
   },
+  module: {
+    rules: [
+      // `import text from "./file?raw"` gives the file's source as a string (used by the learning panel).
+      { resourceQuery: /raw/, type: "asset/source" },
+    ],
+  },
   plugins: [
     new ModuleFederationPlugin({
       name: "products",
       filename: "remoteEntry.js",
       exposes: {
         "./ProductsIndex": "./src/bootstrap",
+        "./ProductsLearn": "./src/learn",
       },
       shared: ['faker']
     }),
