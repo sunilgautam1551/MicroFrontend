@@ -7,11 +7,10 @@ const mount = (el) => {
 };
 
 // Situation 1: When app is running on a isolation mode, we can exceute it immediately.
-if (process.env.NODE_ENV === "development") {
-  const el = document.querySelector("#cart-dev");
-  if (el) {
-    mount(el);
-  }
+// #cart-dev only exists in cart's own index.html, so this never runs inside the container.
+const el = document.querySelector("#cart-dev");
+if (el) {
+  mount(el);
 }
 
 // Situation 2: when app is running through container.

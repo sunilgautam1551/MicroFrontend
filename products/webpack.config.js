@@ -2,7 +2,10 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 
 module.exports = {
-  mode: "development",
+  output: {
+    filename: "[name].[contenthash].js",
+    clean: true,
+  },
   devServer: {
     port: 8081, // main.js running on port 8081
   },

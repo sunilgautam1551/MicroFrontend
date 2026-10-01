@@ -4,7 +4,10 @@ const ModuleFederationPlugin = require(
 );
 
 module.exports = {
-  mode: "development",
+  output: {
+    filename: "[name].[contenthash].js",
+    clean: true,
+  },
   devServer: {
     port: 8082,
   },
